@@ -47,7 +47,7 @@ const DigitizeNegative: React.FC = () => {
                   <StepCard
                   title={t(`digitize.step${step}.title`)}
                   description={t(`digitize.step${step}.description`)}
-                  imgSrc={`/public/step${step}.jpg`} // Assuming you have images for each step
+                  imgSrc={`/step${step}.jpg`} // Assuming you have images for each step
                   />
               </motion.div>
               ))}

@@ -11,8 +11,8 @@ const Hero: React.FC = () => {
         </p>
 
         <BeforeAfter
-          beforeImage="./public/img4.jpg"
-          afterImage="./public/processed_img4.jpg"
+          beforeImage="/img4.jpg"
+          afterImage="/processed_img4.jpg"
         />
 
         <a

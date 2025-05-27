@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Use Tailwind utility classes directly in your HTML, or ensure your build process supports @apply */
+#root {
+  background-color: #F9FAFB; 
+}

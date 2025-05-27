@@ -9,6 +9,8 @@ import {
   FaTrashAlt
 } from "react-icons/fa";
 import ProcessedImage from "./ProcessedImage";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 
 const UploadForm: React.FC = () => {
@@ -73,18 +75,18 @@ const UploadForm: React.FC = () => {
     formData.append("file", file);
 
     try {
-      const uploadRes = await axios.post("http://localhost:8000/upload/", formData, {
+      const uploadRes = await axios.post(`${API_URL}/upload/`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
 
       const filename = uploadRes.data.filename;
 
-      const processRes = await axios.post("http://localhost:8000/process/", null, {
+      const processRes = await axios.post(`${API_URL}/process/`, null, {
         params: { filename }
       });
 
       const processedFilename = processRes.data.filename;
-      const imageUrl = `http://localhost:8000/processed/${processedFilename}`;
+      const imageUrl =  `${API_URL}/processed/${processedFilename}`;
       setProcessedUrl(imageUrl);
       setStatus("success");
     } catch (err: unknown) {

@@ -16,8 +16,8 @@ const Hero: React.FC = () => {
         />
 
         <a
-          href="#digitize"
-          className="inline-block mt-10 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+          href="/digitize-negatives"
+          className="inline-block mt-10 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition" id="test-link"
         >
             {t("hero.cta")}
         </a>

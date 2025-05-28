@@ -16,7 +16,7 @@ const MiniBlog: React.FC = () => {
             <Trans i18nKey="mini_blog.description3" />
           </p>
           <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            <a href="https://www.youtube.com/watch?v=2gk4v0q1x8E" target="_blank" rel="noopener noreferrer">
+            <a href="/digitize-negatives">
               {t("mini_blog.cta")}
             </a>
           </button>

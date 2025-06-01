@@ -19,6 +19,7 @@ const ProcessedImage: React.FC<Props> = ({ imageUrl }) => {
         className="max-h-[300px] w-auto rounded-md shadow-md object-contain"
       />
       <a
+        id="processed-download"
         href={imageUrl}
         download
         className="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"

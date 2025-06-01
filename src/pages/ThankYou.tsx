@@ -11,7 +11,7 @@ export default function ThankYou() {
   const [donations, setDonations] = useState<Donation[]>([]);
 
   useEffect(() => {
-    fetch("https://negative-restore-backend.onrender.com/donations/")
+    fetch("https://https://negative-backend-462932999890.us-central1.run.app/donations/")
       .then((res) => res.json())
       .then((data) => setDonations(data));
   }, []);

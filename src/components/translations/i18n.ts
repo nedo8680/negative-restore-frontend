@@ -79,7 +79,12 @@ i18n.use(initReactI18next).init({
           send: "Send Message",
           sending: "Sending...",
           success: "Thank you! Your message has been sent.",
-          error: "Oops! Something went wrong. Please try again."
+          error: "Oops! Something went wrong. Please try again.",
+          errors: {
+            name: "Name must be between 2 and 50 characters.",
+            email: "Please enter a valid email address.",
+            message: "Message must be between 10 and 1000 characters."
+  }
         },
         about: {
           metaTitle: "About This Project",

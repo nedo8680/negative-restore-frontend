@@ -105,13 +105,13 @@ const UploadForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-6">
+    <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-6 p-6">
       {!file ? (
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          className={`w-full max-w-xl p-10 border-2 border-dashed rounded-xl text-center transition cursor-pointer ${
+          className={`w-full max-w-xl p-10 border-2 border-dashed rounded-xl text-center transition cursor-pointer m-4 ${
             dragOver ? "border-blue-500 bg-blue-50" : "border-gray-300"
           }`}
         >
@@ -156,27 +156,38 @@ const UploadForm: React.FC = () => {
       )}
 
       {/* Botón dinámico según estado */}
-      {file && (
-        <button
-          type={processedUrl ? "button" : "submit"}
-          onClick={processedUrl ? handleClear : undefined}
-          disabled={loading}
-          className={`${
-            processedUrl ? "bg-gray-600 hover:bg-gray-700" : "bg-blue-600 hover:bg-blue-700"
-          } text-white px-6 py-2 rounded-lg flex items-center gap-2 transition disabled:opacity-50`}
-        >
-          {loading ? (
-            <FaSpinner className="animate-spin" />
-          ) : (
-            <FaUpload />
-          )}
-          {loading
-            ? t("digitize.uploading")
-            : processedUrl
-              ? t("digitize.uploadAnother")
-              : t("digitize.processBtn")}
-        </button>
-)}
+  {file && (
+    <>
+      <button
+        id="cta-process"
+        type={processedUrl ? "button" : "submit"}
+        onClick={processedUrl ? handleClear : undefined}
+        disabled={loading}
+        className={`${
+          processedUrl ? "bg-gray-600 hover:bg-gray-700" : "bg-blue-600 hover:bg-blue-700"
+        } text-white px-6 py-2 rounded-lg flex items-center gap-2 transition disabled:opacity-50`}
+      >
+        {loading ? (
+          <FaSpinner className="animate-spin" />
+        ) : (
+          <FaUpload />
+        )}
+        {loading
+          ? t("digitize.uploading")
+          : processedUrl
+            ? t("digitize.uploadAnother")
+            : t("digitize.processBtn")}
+      </button>
+
+      {loading && (
+        <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
+          <FaSpinner className="animate-spin" />
+          <span>Starting up the server… this may take a few minutes, please wait.</span>
+        </div>
+      )}
+    </>
+  )}
+
 
 
       {/* Mensajes de estado */}

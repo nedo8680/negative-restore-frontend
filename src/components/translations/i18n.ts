@@ -15,8 +15,8 @@ i18n.use(initReactI18next).init({
           contact: "Contact",
         },
         hero: {
-          title: "Get Your Negatives Scanned Online",
-          description: "Turn your old film memories into stunning digital photos — effortlessly. Negative Restore helps you scan film negatives using your phone or scanner, and transform them into vivid, high-quality images in seconds.",
+          title: "Slide and Negative Converter – Scan Your Negatives Online",
+          description: "Turn your old film memories into stunning digital photos. With Negative Restore, you can scan negatives to digital using your phone or scanner and convert them into high-quality images in seconds.",
           cta: "Start Scanning Now",
         },
         benefits: {
@@ -44,7 +44,7 @@ i18n.use(initReactI18next).init({
             intro: "Digitising negatives has never been easier. Just follow the steps below and start converting your old film to digital pictures.",
             step1: {
               "title": "Place the Negative on a Bright Screen",
-              "description": "Use a white background on a monitor or tablet to make your photo negative visible and clear. You can gently tape the edges to the screen using a small piece of transparent tape"
+              "description": "Use a white background on a monitor or tablet to make your photo negative visible and clear."
             },
             step2: {
               "title": "Take a Photo and Crop the White Borders",

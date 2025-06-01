@@ -17,6 +17,14 @@ const DigitizeNegative: React.FC = () => {
   return (
     <div>
         <NavBar />
+          <div className="bg-gray-50 pt-8 pb-20 rounded-xl mt-10 mb-20 shadow-sm">
+              <h2 className="text-xl font-semibold mb-10 text-center">
+              {t("digitize.uploadTitle")}
+              </h2>
+              
+              <UploadForm />
+            
+          </div>
         <div className="max-w-5xl mx-auto px-4 py-10">
           <HelmetProvider>
               <title>{t("digitize.title")}</title>
@@ -53,14 +61,6 @@ const DigitizeNegative: React.FC = () => {
               ))}
           </div>
 
-          <div className="bg-gray-50 p-8 rounded-xl shadow-inner">
-              <h2 className="text-xl font-semibold mb-4 text-center">
-              {t("digitize.uploadTitle")}
-              </h2>
-              
-              <UploadForm />
-            
-          </div>
       </div>
         <Footer />
     </div>

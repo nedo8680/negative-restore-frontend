@@ -1,5 +1,5 @@
 import BeforeAfter from "./BeforeAfter";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 const Hero: React.FC = () => {
     const { t } = useTranslation();
@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       <section className="container flex flex-col justify-center items-center bg-gray-50 py-16 px-6 mt-3 text-center">
         <h1 className="text-3xl font-bold mb-4">{t("hero.title")} </h1>
         <p className="text-lg text-gray-600 mb-12 max-w-4xl">
-          {t("hero.description")} 
+          <Trans i18nKey="hero.description" />
         </p>
 
         <BeforeAfter

@@ -14,6 +14,13 @@ i18n.use(initReactI18next).init({
           donate: 'Donate',
           contact: "Contact",
         },
+        seo: {
+           home: {
+            title: "Scan Film Negatives to Digital Photos Online | Negative Restore",
+            description: "Easily scan film negatives and turn negatives into digital photos. Upload online—no scanner needed. The best way to convert negatives into pictures fast.",
+            canonical: "https://negativerestore.com",
+           }
+        },
         hero: {
           title: "Slide and Negative Converter – Scan Your Negatives Online",
           description: "Turn your old film memories into stunning digital photos with <strong>Negative Restore</strong>. Embrace the ease of <strong>negative to digital conversion</strong> using a simple online process that produces high-quality images within seconds.",
@@ -35,7 +42,38 @@ i18n.use(initReactI18next).init({
           description: "At <strong>Negative Restore</strong>, we help you easily <strong>scan film negatives</strong> and turn them into high-quality digital photos. Use a <strong>slide and negative converter</strong> or our online tool - your memories are safe.",
           description2: "Our advanced technology lets you <strong>digitize photo negatives</strong> in minutes—no technical skills required. This means you can <strong>convert negatives to digital photos</strong> from the comfort of your home.",
           description3: "Stop letting your memories fade. <strong>Transfer negatives to digital</strong> today and keep them forever with our <strong>photo negative converter.</strong>",
-          cta: "Convert My Negative Today",
+          cta: "Convert Negatives Now",
+        },
+        howto: {
+          title: "How to scan film negatives and turn them into digital photos",
+          step1_title: "Place the negative on a bright white screen",
+          step1_text:
+            "Set your phone, tablet, or monitor to a bright white screen. Place the film negative flat to prepare for scanning.",
+          step2_title: "Photograph and crop the frame",
+          step2_text:
+            "Use your smartphone camera to scan film negatives. Shoot from above, crop the borders, and prepare your picture for conversion.",
+          step3_title: "Upload and turn negatives into digital photos",
+          step3_text:
+            "Upload the photo to Negative Restore. Instantly scan negatives to digital and download your converted picture.",
+          list_step1:
+            "Place the film negative on a bright white screen (phone/tablet/monitor).",
+          list_step2:
+            "Scan by photographing and cropping the frame with your smartphone—no need for the best scanner for negatives.",
+          list_step3:
+            "Upload to Negative Restore, instantly scan negatives to digital, and turn negatives into pictures you can download and share.",
+          images: {
+            step1: "/images/howto/step1.jpg",
+            step2: "/images/howto/step2.jpg",
+            step3: "/images/howto/step3.jpg"
+          }
+        },
+        faq: {
+          q1: "Can I scan film negatives without a scanner?",
+          a1: "Yes. Use a bright screen as backlight, take a photo with your smartphone, and upload it to Negative Restore to turn negatives into digital photos.",
+          q2: "What is the best scanner for negatives?",
+          a2: "You don’t need a dedicated scanner. Negative Restore lets you scan negatives to digital photos online with just your phone.",
+          q3: "Can I turn negatives into pictures quickly?",
+          a3: "Yes. In less than 2 minutes, you can digitize film negatives, process them, and download your pictures."
         },
         digitize: {
             title: "Convert Negatives to Digital | Photo Negative Converter",
@@ -128,6 +166,37 @@ i18n.use(initReactI18next).init({
           description2: "Nuestra tecnología avanzada te permite <strong>digitalizar negativos fotográficos</strong> en minutos, sin necesidad de habilidades técnicas. Esto significa que puedes <strong>convertir negativos a fotos digitales</strong> desde la comodidad de tu hogar.",
           description3: "Deja de dejar que tus recuerdos se desvanezcan. <strong>Transfiere negativos a digitales</strong> hoy y mantén tus recuerdos para siempre con nuestro <strong>convertidor de negativos fotográficos.</strong>",
           cta: "Convierte Mi Negativo Hoy",
+        },
+        howto: {
+          title: "Cómo escanear negativos y convertirlos en fotos digitales",
+          step1_title: "Coloca el negativo sobre una pantalla blanca brillante",
+          step1_text:
+            "Pon tu teléfono, tablet o monitor en blanco brillante. Coloca el negativo plano para prepararlo.",
+          step2_title: "Fotografía y recorta el encuadre",
+          step2_text:
+            "Usa tu smartphone para escanear negativos. Dispara desde arriba, recorta los bordes y prepara la conversión.",
+          step3_title: "Sube y convierte los negativos en fotos digitales",
+          step3_text:
+            "Sube la foto a Negative Restore. Escanea negativos a digital al instante y descarga tu imagen.",
+          list_step1:
+            "Coloca el negativo sobre una pantalla blanca brillante (teléfono/tablet/monitor).",
+          list_step2:
+            "Escanea fotografiando y recortando con tu smartphone — sin necesidad del mejor escáner para negativos.",
+          list_step3:
+            "Sube a Negative Restore, escanea negativos a digital y convierte negativos en fotos para descargar y compartir.",
+          images: {
+            step1: "/images/howto/step1.jpg",
+            step2: "/images/howto/step2.jpg",
+            step3: "/images/howto/step3.jpg"
+          }
+        },
+        faq: {
+          q1: "¿Puedo escanear negativos sin escáner?",
+          a1: "Sí. Usa una pantalla brillante como luz, haz la foto con tu smartphone y súbela a Negative Restore para convertir negativos en fotos digitales.",
+          q2: "¿Cuál es el mejor escáner para negativos?",
+          a2: "No necesitas un escáner dedicado. Negative Restore te permite escanear negativos a digital en línea solo con tu teléfono.",
+          q3: "¿Puedo convertir negativos en fotos rápidamente?",
+          a3: "Sí. En menos de 2 minutos, digitalizas, procesas y descargas tus fotos."
         },
         digitize: {
             title: "Convierte Negativos a Digital | Convertidor de Negativos Fotográficos",

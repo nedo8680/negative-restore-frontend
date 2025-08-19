@@ -5,21 +5,27 @@ import Benefits from "../components/Benefits";
 import MiniBlog from "../components/MiniBlog";
 import Footer from "../components/Footer";
 
+import HomeSEO from "../components/SEO/HomeSEO";
+import FaqSection from "../components/FaqSection";
+
+
 const Home: React.FC = () => {
   return (
     <>
       <HelmetProvider>
-        <title>Negative Restore | Upload and Convert your Film Negatives</title>
+        <title>Scan Film Negatives to Digital Photos Online | Negative Restore</title>
         <meta
           name="description"
-          content="Use our smart slide and negative converter to scan negatives to digital and convert negatives to digital photos online."
+          content="Easily scan film negatives and turn negatives into digital photos. Upload online—no scanner needed. The best way to convert negatives into pictures fast."
         />
+        <HomeSEO />
       </HelmetProvider>
       <div className="flex flex-col items-center">
         <NavBar />
         <Hero />
+        <MiniBlog reelUrl="https://www.instagram.com/reel/DNWFv4sJYYR/" />
         <Benefits />
-        <MiniBlog />
+        <FaqSection />
         <Footer />
       </div>
     </>

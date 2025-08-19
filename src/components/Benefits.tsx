@@ -5,7 +5,7 @@ import { FcFlashOn, FcMultipleDevices, FcPrivacy } from "react-icons/fc";
 const Benefits: React.FC = () => {
     const { t } = useTranslation();
     return (
-      <section id="digitize" className="py-16 bg-white px-6 text-center">
+      <section id="digitize" className="py-16 bg-white px-6 text-center max-w-5xl">
         <h2 className="text-2xl font-semibold mb-10">{t("benefits.title")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="flex flex-col items-center">

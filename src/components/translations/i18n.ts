@@ -76,6 +76,7 @@ i18n.use(initReactI18next).init({
           a3: "Yes. In less than 2 minutes, you can digitize film negatives, process them, and download your pictures."
         },
         digitize: {
+            clear: "Clear",
             title: "Convert Negatives to Digital | Photo Negative Converter",
             metaDescription: "Turn film negatives into digital images in 3 easy steps. Use our free photo negative converter online.",
             heading: "Turn Film Negatives Into Digital Images in 3 Simple Steps",
@@ -106,6 +107,21 @@ i18n.use(initReactI18next).init({
             processed_download: "Download Processed Image",
             uploadAnother: "Upload another image"
           },
+        share: {
+          copy: "I just converted my negatives into digital photos in seconds with Negative Restore ✨ {{hashtag}}",
+          hashtag: "#NegativeRestore",
+          downloadButton: "Download Processed Image",
+          helpTitle: "Help us to grow 🖤",
+          helpSubtitle: "If you liked, follow us on social media and share your result with your friends!",
+          instagramNote: "For Instagram, download your photo and upload it with the hashtag {{hashtag}}.",
+          altNegative: "Negative preview",
+          altProcessed: "Processed photo",
+          ariaX: "Share on X",
+          ariaFacebook: "Share on Facebook",
+          ariaWhatsApp: "Share on WhatsApp",
+          originalNegative: "Original negative",
+          processedPhoto: "Processed photo"
+        },
         contact: {
           title: "Contact Us - Your Feedback Matters | NG Restore",
           description: "Reach out with questions, feedback or suggestions. We'd love to hear from you.",
@@ -199,6 +215,7 @@ i18n.use(initReactI18next).init({
           a3: "Sí. En menos de 2 minutos, digitalizas, procesas y descargas tus fotos."
         },
         digitize: {
+            clear: "Limpiar",
             title: "Convierte Negativos a Digital | Convertidor de Negativos Fotográficos",
             metaDescription: "Convierte negativos de película en imágenes digitales en 3 pasos sencillos. Usa nuestro convertidor de negativos fotográficos en línea gratis.",
             heading: "Convierte Negativos de Película en Imágenes Digitales en 3 Pasos Sencillos",
@@ -217,6 +234,21 @@ i18n.use(initReactI18next).init({
             },
             uploadTitle: "Sube Tu Imagen Negativa Aquí Abajo",
           },
+        share: {
+          copy: "Acabo de convertir mis negativos a fotos digitales en segundos con Negative Restore ✨ {{hashtag}}",
+          hashtag: "#NegativeRestore",
+          downloadButton: "Descargar imagen procesada",
+          helpTitle: "Ayúdanos a crecer 🖤",
+          helpSubtitle: "¡Comparte tu resultado con tus amigos!",
+          instagramNote: "Para Instagram, descarga tu foto y súbela con el hashtag {{hashtag}}.",
+          altNegative: "Vista previa del negativo",
+          altProcessed: "Foto procesada",
+          ariaX: "Compartir en X",
+          ariaFacebook: "Compartir en Facebook",
+          ariaWhatsApp: "Compartir en WhatsApp",
+          originalNegative: "Negativo original",
+          processedPhoto: "Foto procesada"
+        },
         "upload_button": "Subir y Procesar",
         "processing": "Procesando...",
         "processed_image": "Imagen Procesada",

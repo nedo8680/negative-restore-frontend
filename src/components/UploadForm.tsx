@@ -8,15 +8,14 @@ import {
   FaUpload,
   FaTrashAlt
 } from "react-icons/fa";
-import ProcessedImage from "./ProcessedImage";
+import ResultSection from "./ResultSection";
+
 const API_URL = import.meta.env.VITE_API_URL;
-
-
 
 const UploadForm: React.FC = () => {
   const { t } = useTranslation();
   const [file, setFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // negativo original
   const [processedUrl, setProcessedUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -51,10 +50,7 @@ const UploadForm: React.FC = () => {
     e.preventDefault();
     setDragOver(true);
   };
-
-  const handleDragLeave = () => {
-    setDragOver(false);
-  };
+  const handleDragLeave = () => setDragOver(false);
 
   const handleClear = () => {
     setFile(null);
@@ -78,15 +74,14 @@ const UploadForm: React.FC = () => {
       const uploadRes = await axios.post(`${API_URL}/upload/`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
-
       const filename = uploadRes.data.filename;
 
       const processRes = await axios.post(`${API_URL}/process/`, null, {
         params: { filename }
       });
-
       const processedFilename = processRes.data.filename;
-      const imageUrl =  `${API_URL}/processed/${processedFilename}`;
+      const imageUrl = `${API_URL}/processed/${processedFilename}`;
+
       setProcessedUrl(imageUrl);
       setStatus("success");
     } catch (err: unknown) {
@@ -104,6 +99,42 @@ const UploadForm: React.FC = () => {
     }
   };
 
+  // Si ya hay resultado, renderiza ResultSection (con éxito arriba y trash sobre miniatura)
+  if (processedUrl && previewUrl) {
+    return (
+      <div className="w-full flex flex-col items-center gap-4 sm:gap-6 p-6">
+        {/* MENSAJE DE ÉXITO */}
+        <div className="w-full max-w-3xl mx-auto flex items-center justify-center gap-2 text-green-600 font-medium">
+          <FaCheckCircle className="text-green-600 text-xl" />
+          <span>{t("digitize.success")}</span>
+        </div>
+
+        {/* CONTENEDOR DEL RESULTADO */}
+        <ResultSection
+          imageUrl={processedUrl}
+          negativeUrl={previewUrl}
+          onUploadAnother={() => {
+            handleClear();
+            // Scroll suave al formulario
+            setTimeout(() => {
+              const form = document.getElementById("upload-form");
+              if (form) form.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          }}
+          onClear={handleClear}
+        />
+
+        {status === "error" && error && (
+          <div className="flex items-center text-red-500 gap-2">
+            <FaTimesCircle />
+            {error}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Estado inicial / antes de procesar
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-6 p-6">
       {!file ? (
@@ -116,87 +147,59 @@ const UploadForm: React.FC = () => {
           }`}
         >
           <label className="cursor-pointer flex flex-col items-center gap-2">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleChange}
-              className="hidden"
-            />
+            <input type="file" accept="image/*" onChange={handleChange} className="hidden" />
             <FaUpload className="text-3xl text-blue-500" />
             <p className="text-lg font-semibold">{t("digitize.dropZone.title")}</p>
             <p className="text-sm text-gray-500">{t("digitize.dropZone.hint")}</p>
           </label>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row gap-6 mt-6 justify-center items-center">
-          {/* Imagen original */}
-          <div className="flex flex-col items-center">
-            <div className="relative">
+        <>
+          {/* Preview del negativo con TRASH en esquina (siempre visible en mobile, hover en desktop) */}
+          {previewUrl && (
+            <div className="group relative">
               <img
-                src={previewUrl!}
+                src={previewUrl}
                 alt="Preview"
                 className="max-h-[300px] w-auto rounded-md shadow-md object-contain"
               />
               <button
                 type="button"
                 onClick={handleClear}
-                className="absolute top-2 right-2 bg-white p-1 rounded-full shadow hover:bg-red-100 transition"
+                className="absolute top-2 right-2 bg-white p-2 rounded-full shadow
+                           text-red-600 hover:bg-red-100 transition
+                           opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+                aria-label={t("digitize.clear")}
+                title={t("digitize.clear")}
               >
-                <FaTrashAlt className="text-red-500" />
+                <FaTrashAlt />
               </button>
+              <p className="mt-2 text-center text-sm text-gray-600">
+                {file.name} ({(file.size / 1024).toFixed(1)} KB)
+              </p>
             </div>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              {file.name} ({(file.size / 1024).toFixed(1)} KB)
-            </p>
-          </div>
-        
-          {/* Imagen procesada */}
-          {processedUrl && <ProcessedImage imageUrl={processedUrl} />}
-        </div>
+          )}
+
+          {/* Botón procesar */}
+          <button
+            id="cta-process"
+            type="submit"
+            disabled={loading}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition disabled:opacity-50"
+          >
+            {loading ? <FaSpinner className="animate-spin" /> : <FaUpload />}
+            {loading ? t("digitize.uploading") : t("digitize.processBtn")}
+          </button>
+
+          {loading && (
+            <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
+              <FaSpinner className="animate-spin" />
+              <span>Starting up the server… this may take a few minutes, please wait.</span>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Botón dinámico según estado */}
-  {file && (
-    <>
-      <button
-        id="cta-process"
-        type={processedUrl ? "button" : "submit"}
-        onClick={processedUrl ? handleClear : undefined}
-        disabled={loading}
-        className={`${
-          processedUrl ? "bg-gray-600 hover:bg-gray-700" : "bg-blue-600 hover:bg-blue-700"
-        } text-white px-6 py-2 rounded-lg flex items-center gap-2 transition disabled:opacity-50`}
-      >
-        {loading ? (
-          <FaSpinner className="animate-spin" />
-        ) : (
-          <FaUpload />
-        )}
-        {loading
-          ? t("digitize.uploading")
-          : processedUrl
-            ? t("digitize.uploadAnother")
-            : t("digitize.processBtn")}
-      </button>
-
-      {loading && (
-        <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
-          <FaSpinner className="animate-spin" />
-          <span>Starting up the server… this may take a few minutes, please wait.</span>
-        </div>
-      )}
-    </>
-  )}
-
-
-
-      {/* Mensajes de estado */}
-      {status === "success" && (
-        <div className="flex items-center text-green-600 gap-2">
-          <FaCheckCircle />
-          {t("digitize.success")}
-        </div>
-      )}
       {status === "error" && error && (
         <div className="flex items-center text-red-500 gap-2">
           <FaTimesCircle />
